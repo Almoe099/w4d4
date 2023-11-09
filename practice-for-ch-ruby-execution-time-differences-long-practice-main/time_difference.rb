@@ -23,15 +23,14 @@ def largest_contiguous_subsum(list)
 end
 
 def improved_largest_contiguous_subsum(list)
-  cur_sum = 0
-  max_sum = list.first
-
-  (0...list.length).each do |i|
-    cur_sum = list[0..i].sum
-    cur_sum = 0 if cur_sum < 0 
-    max_sum = cur_sum if max_sum < cur_sum   
-  end
-  max_sum
+    max = list.first 
+    sum = 0
+    list.each do |el| 
+        sum += el
+        sum = 0 if sum < 0
+        max = sum if sum > max
+    end
+    max
 end
 
 list = [5, 3, -7]
